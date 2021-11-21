@@ -1,0 +1,7 @@
+{
+	"project":"demo",
+	"describe":"a demo of using KGIS SDK",
+	"mapType":"bmap",
+	"sdkVersion":"0.2.0",
+	"projectVersion":"0.2.0"
+}

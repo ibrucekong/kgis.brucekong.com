@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KGIS's demo of using KGIS SDK"/>
+  <link rel="shortcut icon" sizes="196x196" href="../favicon.ico">
+  <title>Demo - KGIS</title>
+
+  <link rel="stylesheet" href="../libs/bower/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../libs/bower/material-design-iconic-font/dist/css/material-design-iconic-font.css">
+  <!-- build:css ../assets/css/app.min.css -->
+  <link rel="stylesheet" href="../libs/bower/animate.css/animate.min.css">
+  <link rel="stylesheet" href="../libs/bower/fullcalendar/dist/fullcalendar.min.css">
+  <link rel="stylesheet" href="../libs/bower/perfect-scrollbar/css/perfect-scrollbar.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/core.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <!-- endbuild -->
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300">
+  <script src="../libs/bower/breakpoints.js/dist/breakpoints.min.js"></script>
+  <script>
+    Breakpoints();
+  </script>
+</head>
+
+<body class="menubar-left menubar-unfold menubar-light theme-primary">
+<!--============= start main area -->
+
+<!-- APP NAVBAR ==========-->
+<nav id="app-navbar" class="navbar navbar-inverse navbar-fixed-top primary">
+
+  <!-- navbar header -->
+  <div class="navbar-header">
+    <button type="button" id="menubar-toggle-btn"
+            class="navbar-toggle visible-xs-inline-block navbar-toggle-left hamburger hamburger--collapse js-hamburger">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+    </button>
+
+    <a href="../" class="navbar-brand">
+      <span class="brand-icon"><img src="../assets/images/index/logo-min.png" alt="logo" style="height: 30px;"></span>
+      <span class="brand-name">GIS</span>
+    </a>
+  </div><!-- .navbar-header -->
+
+  <div class="navbar-container container-fluid">
+    <div class="collapse navbar-collapse" id="app-navbar-collapse">
+      <ul class="nav navbar-toolbar navbar-toolbar-left navbar-left">
+        <li class="hidden-float hidden-menubar-top">
+          <a role="button" id="menubar-fold-btn"
+             class="hamburger hamburger--arrowalt is-active js-hamburger">
+            <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+          </a>
+        </li>
+        <li>
+          <h5 class="page-title hidden-menubar-top hidden-float">Demo</h5>
+        </li>
+      </ul>
+
+    </div>
+  </div><!-- navbar-container -->
+</nav>
+<!--========== END app navbar -->
+
+<!-- APP ASIDE ==========-->
+<aside id="menubar" class="menubar light">
+  <div class="app-user">
+    <div class="media">
+      <div class="media-left">
+        <div class="avatar avatar-md avatar-circle">
+          <a><img class="img-responsive" src="../assets/images/index/round.jpg"
+                  alt="avatar"/></a>
+        </div><!-- .avatar -->
+      </div>
+      <div class="media-body">
+        <div class="foldable">
+          <h5><a href="./" class="username">Bruce Kong</a></h5>
+          <ul>
+            <li class="dropdown">
+              <a class="dropdown-toggle usertitle" data-toggle="dropdown" aria-haspopup="true"
+                 aria-expanded="false">
+                <small>更多信息</small>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu animated flipInY">
+                <li>
+                  <a class="text-color" href="https://www.brucekong.com">
+                    <span class="m-r-xs"><i class="fa fa-home"></i></span>
+                    <span>我的站点</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="text-color" href="https://blog.brucekong.com">
+                    <span class="m-r-xs"><i class="zmdi zmdi-blogger"></i></span>
+                    <span>我的博客</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="text-color" href="https://blog.brucekong.com/about/">
+                    <span class="m-r-xs"><i class="fa fa-user"></i></span>
+                    <span>关于我</span>
+                  </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <a class="text-color" href="../">
+                    <span class="m-r-xs"><i class="zmdi zmdi-swap"></i></span>
+                    <span>回到主页</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div><!-- .media-body -->
+    </div><!-- .media -->
+  </div><!-- .app-user -->
+
+  <div class="menubar-scroll">
+    <div class="menubar-scroll-inner">
+      <ul class="app-menu">
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-home zmdi-hc-lg"></i>
+            <span class="menu-text">地图初始化</span>
+            <span class="label label-primary menu-label">6</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a href="index.html"><span class="menu-text">百度地图</span></a></li>
+            <li><a href="amap.html"><span class="menu-text">高德地图</span></a></li>
+            <li><a href="gmap.html"><span class="menu-text">谷歌地图</span></a></li>
+            <li><a href="arcgis3.html"><span class="menu-text">ArcGIS3[ing]</span></a></li>
+            <li><a onclick="reInit()"><span class="menu-text">ArcGIS4[ing]</span></a></li>
+            <li><a href="leaflet.html"><span class="menu-text">Leaflet[ing]</span></a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-map zmdi-hc-lg"></i>
+            <span class="menu-text">地图类库</span>
+            <span class="label label-primary menu-label">7</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick="zoomIn()"><span class="menu-text">放大</span></a></li>
+            <li><a onclick="zoomOut()"><span class="menu-text">缩小</span></a></li>
+            <li><a onclick="panTo(120.33,36.07)"><span class="menu-text">平移</span></a></li>
+            <li><a onclick="centerAndZoom([117.13,36.18],15)"><span class="menu-text">居中放大</span></a></li>
+            <li><a onclick="disableDoubleClickZoom()"><span class="menu-text">禁用双击放大</span></a></li>
+            <li><a onclick="enableDoubleClickZoom()"><span class="menu-text">启用双击放大</span></a></li>
+            <li><a onclick="setMapType('hybrid')"><span class="menu-text">地图类型切换</span></a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-wrench zmdi-hc-lg"></i>
+            <span class="menu-text">控件类库</span>
+            <span class="label label-primary menu-label">6</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick="addScale()"><span class="menu-text">添加比例尺</span></a></li>
+            <li><a onclick="removeScale()"><span class="menu-text">移除比例尺</span></a></li>
+            <li><a onclick="addToolBar()"><span class="menu-text">添加工具条</span></a></li>
+            <li><a onclick="removeToolBar()"><span class="menu-text">移除工具条</span></a></li>
+            <li><a onclick="addOverView(true)"><span class="menu-text">添加鹰眼</span></a></li>
+            <li><a onclick="removeOverView(true)"><span class="menu-text">移除鹰眼</span></a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-navigation zmdi-hc-lg"></i>
+            <span class="menu-text">定位类库</span>
+            <span class="label label-primary menu-label">1</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick="locationByLnglat(120.33,36.07)"><span class="menu-text">根据经纬度定位</span></a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-flash zmdi-hc-lg"></i>
+            <span class="menu-text">事件类库</span>
+            <span class="label label-primary menu-label">30</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick="regMapZoomstart()"><span class="menu-text">注册地图开始缩放</span></a></li>
+            <li><a onclick="unRegMapZoomstart()"><span class="menu-text">移除地图开始缩放</span></a></li>
+
+            <li><a onclick="regMapZoomend()"><span class="menu-text">注册地图结束缩放</span></a></li>
+            <li><a onclick="unRegMapZoomend()"><span class="menu-text">移除地图结束缩放</span></a></li>
+
+            <li><a onclick="regMapMoveStart()"><span class="menu-text">注册地图开始移动</span></a></li>
+            <li><a onclick="unRegMapMoveStart()"><span class="menu-text">移除地图开始移动</span></a></li>
+
+            <li><a onclick="regMapMoving()"><span class="menu-text">注册地图移动中</span></a></li>
+            <li><a onclick="unRegMapMoving()"><span class="menu-text">移除地图移动中</span></a></li>
+
+            <li><a onclick="regMapMoveend()"><span class="menu-text">注册地图结束移动</span></a></li>
+            <li><a onclick="unRegMapMoveend()"><span class="menu-text">移除地图结束移动</span></a></li>
+
+            <li><a onclick="regMapDragStart()"><span class="menu-text">注册地图开始拖拽</span></a></li>
+            <li><a onclick="unRegMapDragStart()"><span class="menu-text">移除地图开始拖拽</span></a></li>
+
+            <li><a onclick="regMapDragging()"><span class="menu-text">注册地图拖拽中</span></a></li>
+            <li><a onclick="unRegMapDragging()"><span class="menu-text">移除地图拖拽中</span></a></li>
+
+            <li><a onclick="regMapDragend()"><span class="menu-text">注册地图结束拖拽</span></a></li>
+            <li><a onclick="unRegMapDragend()"><span class="menu-text">移除地图结束拖拽</span></a></li>
+
+            <li><a onclick="regMapClick()"><span class="menu-text">注册地图左键单击</span></a></li>
+            <li><a onclick="unRegMapClick()"><span class="menu-text">移除地图左键单击</span></a></li>
+
+            <li><a onclick="regMapDblClick()"><span class="menu-text">注册地图左键双击</span></a></li>
+            <li><a onclick="unRegMapDblClick()"><span class="menu-text">移除地图左键双击</span></a></li>
+
+            <li><a onclick="regMapRightClick()"><span class="menu-text">注册地图右键单击</span></a></li>
+            <li><a onclick="unRegMapRightClick()"><span class="menu-text">移除地图右键单击</span></a></li>
+
+            <li><a onclick="regMapRightDblClick()"><span class="menu-text">注册地图右键双击(百度)</span></a></li>
+            <li><a onclick="unRegMapRightDblClick()"><span class="menu-text">移除地图右键双击(百度)</span></a></li>
+
+            <li><a onclick="addMarker()"><span class="menu-text">标注点</span></a></li>
+
+            <li><a onclick="regMarkerClick()"><span class="menu-text">注册marker左键单击</span></a></li>
+            <li><a onclick="unRegMarkerClick()"><span class="menu-text">移除marker左键单击</span></a></li>
+
+            <li><a onclick="regMarkerDblClick()"><span class="menu-text">注册marker左键双击</span></a></li>
+            <li><a onclick="unRegMarkerDblClick()"><span class="menu-text">移除marker左键双击</span></a></li>
+
+            <li><a onclick="regMarkerRightClick()"><span class="menu-text">注册marker右键单击</span></a></li>
+            <li><a onclick="unRegMarkerRightClick()"><span class="menu-text">移除marker右键单击</span></a></li>
+
+            <li><a onclick="regMarkerMousedown()"><span class="menu-text">注册marker上鼠标按下</span></a></li>
+            <li><a onclick="unRegMarkerMousedown()"><span class="menu-text">移除marker上鼠标按下</span></a></li>
+
+            <li><a onclick="regMarkerMouseup()"><span class="menu-text">注册marker上鼠标释放</span></a></li>
+            <li><a onclick="unRegMarkerMouseup()"><span class="menu-text">移除marker上鼠标释放</span></a></li>
+
+            <li><a onclick="regMarkerMouseout()"><span class="menu-text">注册鼠标离开marker</span></a></li>
+            <li><a onclick="unRegMarkerMouseout()"><span class="menu-text">移除鼠标离开marker</span></a></li>
+
+            <li><a onclick="regMarkerMouseover()"><span class="menu-text">注册鼠标进入marker</span></a></li>
+            <li><a onclick="unRegMarkerMouseover()"><span class="menu-text">移除鼠标进入marker</span></a></li>
+
+            <li><a onclick="removeMarker()"><span class="menu-text">移除标注点</span></a></li>
+
+            <li><a onclick="addPolyline()"><span class="menu-text">标注线</span></a></li>
+
+            <li><a onclick="regPolylineClick()"><span class="menu-text">注册polyline左键单击</span></a></li>
+            <li><a onclick="unRegPolylineClick()"><span class="menu-text">移除polyline左键单击</span></a></li>
+
+            <li><a onclick="regPolylineDblClick()"><span class="menu-text">注册polyline左键双击</span></a></li>
+            <li><a onclick="unRegPolylineDblClick()"><span class="menu-text">移除polyline左键双击</span></a></li>
+
+            <li><a onclick="removePolyline()"><span class="menu-text">移除标注线</span></a></li>
+
+            <li><a onclick="addPolygon()"><span class="menu-text">标注面</span></a></li>
+
+            <li><a onclick="regPolygonClick()"><span class="menu-text">注册polygon左键单击</span></a></li>
+            <li><a onclick="unRegPolygonClick()"><span class="menu-text">移除polygon左键单击</span></a></li>
+
+            <li><a onclick="regPolygonDblClick()"><span class="menu-text">注册polygon左键双击</span></a></li>
+            <li><a onclick="unRegPolygonDblClick()"><span class="menu-text">移除polygon左键双击</span></a></li>
+
+            <li><a onclick="removePolygon()"><span class="menu-text">移除标注面</span></a></li>
+
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-pin zmdi-hc-lg"></i>
+            <span class="menu-text">标注类库</span>
+            <span class="label label-primary menu-label">8</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick="addLabel()"><span class="menu-text">文字标注</span></a></li>
+            <li><a onclick="removeLabel()"><span class="menu-text">移除文字标注</span></a></li>
+            <li><a onclick="addMarker()"><span class="menu-text">标注点</span></a></li>
+            <li><a onclick="removeMarker()"><span class="menu-text">移除标注点</span></a></li>
+            <li><a onclick="addPolyline()"><span class="menu-text">标注线</span></a></li>
+            <li><a onclick="removePolyline()"><span class="menu-text">移除标注线</span></a></li>
+            <li><a onclick="addPolygon()"><span class="menu-text">标注面</span></a></li>
+            <li><a onclick="removePolygon()"><span class="menu-text">移除标注面</span></a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-menu zmdi-hc-lg"></i>
+            <span class="menu-text">菜单类库</span>
+            <span class="label label-primary menu-label">12</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick="initMapMenu()"><span class="menu-text">初始化地图菜单对象</span></a></li>
+            <li><a onclick="addMapMenuZoomIn()"><span class="menu-text">地图(增加地图放大)</span></a></li>
+            <li><a onclick="addMapMenuSeparator()"><span class="menu-text">地图(增加分隔符)</span></a></li>
+            <li><a onclick="addMapMenuZoomOut()"><span class="menu-text">地图(增加地图缩小)</span></a></li>
+            <li><a onclick="completeMapMenu()"><span class="menu-text">生成地图菜单</span></a></li>
+
+            <li><a onclick="addMarker()"><span class="menu-text">标注(添加点)</span></a></li>
+            <li><a onclick="initMarkerMenu()"><span class="menu-text">初始化marker菜单对象</span></a></li>
+            <li><a onclick="addMarkerMenuRight()"><span class="menu-text">标注(添加点右键菜单)</span></a></li>
+            <li><a onclick="completeMarkerMenu()"><span class="menu-text">生成marker菜单</span></a></li>
+            <li><a onclick="removeMarker()"><span class="menu-text">移除标注点</span></a></li>
+
+            <li><a onclick="addPolyline()"><span class="menu-text">标注(添加线)</span></a></li>
+            <li><a onclick="initPolylineMenu()"><span class="menu-text">初始化polyline菜单对象</span></a></li>
+            <li><a onclick="addPolylineMenuRight()"><span class="menu-text">标注(添加线右键菜单)</span></a></li>
+            <li><a onclick="completePolylineMenu()"><span class="menu-text">生成polyline菜单</span></a></li>
+            <li><a onclick="removePolyline()"><span class="menu-text">移除标注线</span></a></li>
+
+            <li><a onclick="addPolygon()"><span class="menu-text">标注(添加面)</span></a></li>
+            <li><a onclick="initPolygonMenu()"><span class="menu-text">初始化polygon菜单对象</span></a></li>
+            <li><a onclick="addPolygonMenuRight()"><span class="menu-text">标注(添加面右键菜单)</span></a></li>
+            <li><a onclick="completePolygonMenu()"><span class="menu-text">生成polygon菜单</span></a></li>
+            <li><a onclick="removePolygon()"><span class="menu-text">移除标注面</span></a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-windows zmdi-hc-lg"></i>
+            <span class="menu-text">弹窗类库</span>
+            <span class="label label-primary menu-label">3</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick="addMarker()"><span class="menu-text">标注点</span></a></li>
+            <li><a onclick="newInfoWindow()"><span class="menu-text">新建信息弹窗</span></a></li>
+            <li><a onclick="removeMarker()"><span class="menu-text">移除标注点</span></a></li>
+          </ul>
+        </li>
+
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-router zmdi-hc-lg"></i>
+            <span class="menu-text">测量类库</span>
+            <span class="label label-primary menu-label">6</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick="newMeasureLine()"><span class="menu-text">1.新建线段测量对象</span></a></li>
+            <li><a onclick="openMeasureLine()"><span class="menu-text">2.开始测量长度</span></a></li>
+            <li><a onclick="closeMeasureLine()"><span class="menu-text">3.结束测量对象</span></a></li>
+            <li><a onclick="newMeasureArea()"><span class="menu-text">1.新建面积测量对象</span></a></li>
+            <li><a onclick="openMeasureArea()"><span class="menu-text">2.开始面积测量</span></a></li>
+            <li><a onclick="closeMeasureArea()"><span class="menu-text">3.结束面积测量</span></a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-windows zmdi-hc-lg"></i>
+            <span class="menu-text">地理编码类库</span>
+            <span class="label label-primary menu-label">2</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick="getPointDetail()"><span class="menu-text">正向地理解析</span></a></li>
+            <li><a onclick="getAddressDetail()"><span class="menu-text">逆向地理解析</span></a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-windows zmdi-hc-lg"></i>
+            <span class="menu-text">服务类库</span>
+            <span class="label label-primary menu-label">2</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick="showAutoComplete()"><span class="menu-text">关键字自动提示</span></a></li>
+            <li><a onclick="drivingRoute(1)"><span class="menu-text">驾车规划-默认</span></a></li>
+            <li><a onclick="drivingRoute(2)"><span class="menu-text">驾车规划-优先高速</span></a></li>
+            <li><a onclick="drivingRoute(3)"><span class="menu-text">驾车规划-避开高速</span></a></li>
+            <li><a onclick="drivingRoute(4)"><span class="menu-text">驾车规划-避开拥堵</span></a></li>
+            <!--<li><a onclick="getDrivingRouteResult()"><span class="menu-text">获取驾车规划结果</span></a></li>-->
+            <li><a onclick="clearDrivingRoute()"><span class="menu-text">清除上一次驾车规划</span></a></li>
+          </ul>
+        </li>
+
+        <li class="menu-separator">
+          <hr>
+        </li>
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-apps zmdi-hc-lg"></i>
+            <span class="menu-text">UI - 1</span>
+            <span class="label label-primary menu-label">1</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick=""><span class="menu-text">预研中</span></a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-widgets zmdi-hc-lg"></i>
+            <span class="menu-text">UI - 2</span>
+            <span class="label label-primary menu-label">1</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li><a onclick=""><span class="menu-text">预研中</span></a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="https://www.brucekong.com">
+            <i class="menu-icon zmdi zmdi-link zmdi-hc-lg"></i>
+            <span class="menu-text">URL</span>
+          </a>
+        </li>
+      </ul><!-- .app-menu -->
+    </div><!-- .menubar-scroll-inner -->
+  </div><!-- .menubar-scroll -->
+</aside>
+<!--========== END app aside -->
+
+<!-- APP MAIN ==========-->
+<main id="app-main" class="app-main">
+  <div class="content">
+    <section class="ui-kmap">
+      <div id="allmap"></div>
+      <div class="search">
+        <label for="search"></label><input type="text" id="search">
+      </div>
+    </section>
+  </div>
+</main>
+<!--========== END app main -->
+
+<!-- build:js ../assets/js/core.min.js -->
+<script src="../libs/bower/jquery/dist/jquery.js"></script>
+<script src="../libs/bower/jquery-ui/jquery-ui.min.js"></script>
+<script src="../libs/bower/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+
+// 扩展jQuery模块，使得可以对普通控件进行尺寸变化的监听
+<script src="../assets/js/jquery-extend.js"></script>
+
+<script src="../libs/bower/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+<script src="../libs/bower/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="../libs/bower/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+<script src="../libs/bower/PACE/pace.min.js"></script>
+<!-- endbuild -->
+
+<!-- build:js ../assets/js/app.min.js -->
+<script src="../assets/js/map/kgis.js"></script>
+<script src="../assets/js/library.js"></script>
+<script src="../assets/js/plugins.js"></script>
+<script src="../assets/js/app.js"></script>
+<!-- endbuild -->
+<script src="../libs/bower/moment/moment.js"></script>
+<script src="../libs/bower/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="../assets/js/fullcalendar.js"></script>
+<script src="../libs/layer.js"></script>
+<script>
+  function layerAlert(message, theme) {
+    layer.closeAll();
+    layer.msg(message, {icon: theme, btn: false, title: false, time: 5000, offset: ['80%']});
+  }
+</script>
+<script src="../assets/js/change-event.js"></script>
+
+<script src="../assets/js/libs/index.js"></script>
+
+<script src="../assets/js/libs/map.js"></script>
+<script src="../assets/js/libs/controller.js"></script>
+<script src="../assets/js/libs/menu.js"></script>
+<script src="../assets/js/libs/measure.js"></script>
+<script src="../assets/js/libs/location.js"></script>
+<script src="../assets/js/libs/infowindow.js"></script>
+<script src="../assets/js/libs/event.js"></script>
+<script src="../assets/js/libs/overlay.js"></script>
+<script src="../assets/js/libs/geocoder.js"></script>
+<script src="../assets/js/libs/service.js"></script>
+</body>
+
+</html>
